@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 26, 2024 at 09:18 AM
+-- Generation Time: May 01, 2024 at 11:14 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -73,6 +73,25 @@ INSERT INTO `player` (`id_player`, `id_user`, `player_name`, `health`, `damage`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `shop`
+--
+
+CREATE TABLE `shop` (
+  `id_item` int NOT NULL,
+  `item_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `price` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `shop`
+--
+
+INSERT INTO `shop` (`id_item`, `item_name`, `price`) VALUES
+(1, 'koko', 123);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -87,7 +106,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `Password`) VALUES
-(1, 'user1', '123');
+(1, 'user1', '123'),
+(2, 'admin', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -105,6 +125,12 @@ ALTER TABLE `enemy`
 ALTER TABLE `player`
   ADD PRIMARY KEY (`id_player`),
   ADD KEY `id_user` (`id_user`);
+
+--
+-- Indexes for table `shop`
+--
+ALTER TABLE `shop`
+  ADD PRIMARY KEY (`id_item`);
 
 --
 -- Indexes for table `user`
@@ -129,10 +155,16 @@ ALTER TABLE `player`
   MODIFY `id_player` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `shop`
+--
+ALTER TABLE `shop`
+  MODIFY `id_item` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
