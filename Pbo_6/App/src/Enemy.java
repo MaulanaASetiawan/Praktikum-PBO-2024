@@ -248,7 +248,7 @@ class EnemyManager {
     public static void menuAdmin() throws IOException, SQLException{
         clear();
         int choice;
-        Item item = new Item(null, 0);
+        Item item = new Item(null, 0, 0);
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("+-----------------------+");
         System.out.println("|  [1] Add Enemy        |");

@@ -40,6 +40,7 @@ public class Player extends Chara{
 class PlayerManager {
     private static Connection conn;
     private static PreparedStatement pstmt;
+    private static Shop shop;
 
     public static void connect(){
         try{
@@ -197,6 +198,7 @@ class PlayerManager {
     public static void menuUser(int userId) throws IOException, SQLException {
         clear();
         int choice;
+        Item item = new Item(null, 0, 0);
         try (BufferedReader input = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println("+-------------------+");
             System.out.println("|  [1] Fight        |");
@@ -204,9 +206,9 @@ class PlayerManager {
             System.out.println("|  [3] Update Player|");
             System.out.println("|  [4] Delete Player|");
             System.out.println("|  [5] Player Stat  |");
+            System.out.println("|  [6] Shop         |");
             System.out.println("+-------------------+");
             System.out.println("|    Coming Soon    |");
-            System.out.println("|        Shop       |");
             System.out.println("|     Inventory     |");
             System.out.println("+-------------------+");
             System.out.println("|  [0] Exit         |");
@@ -235,6 +237,10 @@ class PlayerManager {
                     displayAllPlayers(userId); 
                     input.readLine();
                     menuUser(userId);
+                }
+                case 6 -> {
+                    clear();
+                    item.shopPlayer(userId, shop);
                 }
                 case 0 -> System.exit(0);
                 default -> {
